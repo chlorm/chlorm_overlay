@@ -31,7 +31,8 @@ DEPEND=">=dev-libs/libgcrypt-1.6.0
 	nls? ( sys-devel/gettext )
 	>=net-libs/libmicrohttpd-0.9.18
 	dev-libs/libunistring
-	>=sci-mathematics/glpk-4.45"
+	>=sci-mathematics/glpk-4.45
+	>=net-dns/libidn-1.13"
 
 pkg_setup() {
 	if ! use mysql && ! use sqlite; then
