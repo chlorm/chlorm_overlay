@@ -20,7 +20,7 @@ LICENSE="GPL-2"
 SLOT="0"
 S="${WORKDIR}/${PN}-${MY_PV}"
 
-DEPEND=">=dev-libs/libgcrypt-1.2.0
+DEPEND=">=dev-libs/libgcrypt-1.6.0
 	>=media-libs/libextractor-0.6.1
 	>=dev-libs/gmp-4.0.0
 	sys-libs/zlib
