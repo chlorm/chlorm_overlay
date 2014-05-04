@@ -34,12 +34,13 @@ DEPEND="
 	net-misc/curl
 	sys-apps/sed
 	mysql? ( >=virtual/mysql-5.1 )
-        sqlite? ( >=dev-db/sqlite-3.0.8 )
+    sqlite? ( >=dev-db/sqlite-3.8.0 )
+    postgres? ( >=dev-db/postgresql-server-9.3.3 )
 	nls? ( sys-devel/gettext )
 	>=sci-mathematics/glpk-4.45"
 
 pkg_setup() {
-	if ! use mysql && ! use sqlite; then
+	if ! use mysql && ! use sqlite && ! use postgres; then
 		einfo
 		einfo "You need to specify at least one of 'mysql' or 'sqlite'"
 		einfo "USE flag in order to have properly installed gnunet"
