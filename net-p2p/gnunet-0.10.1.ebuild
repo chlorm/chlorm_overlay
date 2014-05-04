@@ -69,7 +69,7 @@ src_install() {
 	dodoc AUTHORS ChangeLog INSTALL NEWS README
 	docinto contrib
 	dodoc contrib/*
-	newinitd "${FILESDIR}"/${PN}.initd-0.9.0v2 gnunet
+	newinitd "${FILESDIR}"/${PN}.initd-0.10.1 gnunet
 	dodir /var/lib/gnunet
 	chown gnunetd:gnunetd "${D}"/var/lib/gnunet
 }
