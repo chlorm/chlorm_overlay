@@ -20,8 +20,15 @@ LICENSE="GPL-2"
 SLOT="0"
 S="${WORKDIR}/${PN}-${MY_PV}"
 
-DEPEND=">=dev-libs/libgcrypt-1.6.0
+DEPEND="
+	>=net-libs/libmicrohttpd-0.9.30
 	>=media-libs/libextractor-0.6.1
+	>=sys-devel/libtool-2.2
+	>=dev-libs/libunistring-0.9.1.1
+	>=net-dns/libidn-1.13
+	>=dev-libs/libgcrypt-1.6.0
+	>=net-libs/gnutls-3.2.7
+	>=dev-libs/openssl-1.0.1g
 	>=dev-libs/gmp-4.0.0
 	sys-libs/zlib
 	net-misc/curl
@@ -29,10 +36,7 @@ DEPEND=">=dev-libs/libgcrypt-1.6.0
 	mysql? ( >=virtual/mysql-5.1 )
         sqlite? ( >=dev-db/sqlite-3.0.8 )
 	nls? ( sys-devel/gettext )
-	>=net-libs/libmicrohttpd-0.9.18
-	dev-libs/libunistring
-	>=sci-mathematics/glpk-4.45
-	>=net-dns/libidn-1.13"
+	>=sci-mathematics/glpk-4.45"
 
 pkg_setup() {
 	if ! use mysql && ! use sqlite; then
