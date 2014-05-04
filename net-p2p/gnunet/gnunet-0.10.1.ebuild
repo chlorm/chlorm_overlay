@@ -1,8 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: gnunet-0.10.1.ebuild, v0.1 $
 
-EAPI=2
+EAPI="2"
 
 inherit eutils autotools
 
@@ -11,27 +11,30 @@ MY_PV="${PV/_/}"
 DESCRIPTION="GNUnet is an anonymous, distributed, reputation based network."
 HOMEPAGE="http://gnunet.org/"
 SRC_URI="http://ftp.gnu.org/gnu/gnunet/${PN}-${MY_PV}.tar.gz"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~amd64"
+IUSE="mysql nls sqlite postgres"
+# IUSE="mysql nls sqlite postgres TeX pulse opus ogg certool zbar gtk+"
+S="${WORKDIR}/${PN}-${MY_PV}"
+
 #tests don't work
 RESTRICT="test"
 
-IUSE="mysql nls sqlite postgres"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
-LICENSE="GPL-2"
-SLOT="0"
-S="${WORKDIR}/${PN}-${MY_PV}"
-
-DEPEND="
+RDEPEND="
 	>=net-libs/libmicrohttpd-0.9.30
 	>=media-libs/libextractor-0.6.1
 	>=sys-devel/libtool-2.2
 	>=dev-libs/libunistring-0.9.1.1
 	>=net-dns/libidn-1.13
 	>=dev-libs/libgcrypt-1.6.0
-	>=net-libs/gnutls-3.2.7
+	>=net-libs/gnutls-3.2.7"
+
+DEPEND="${RDEPEND}
 	>=dev-libs/openssl-1.0.1g
 	>=dev-libs/gmp-4.0.0
 	sys-libs/zlib
-	net-misc/curl
 	sys-apps/sed
 	mysql? ( >=virtual/mysql-5.1 )
     sqlite? ( >=dev-db/sqlite-3.8.0 )
