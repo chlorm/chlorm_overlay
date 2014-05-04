@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>                                                                                                     
+<repositories version="1.0">
+	<repo priority="50" quality="experimental" status="unofficial">
+		<name>Chlorm</name>
+		<description>Testing software and additional addons.</description>
+		<homepage>http://github.com/Chlorm/</homepage>
+		<owner>
+			<email>codyopel@gmail.org</email>
+		</owner>
+		<source type="git">git://github.com/Chlorm/chlorm_overlay.git</source>
+	</repo>
+</repositories>
