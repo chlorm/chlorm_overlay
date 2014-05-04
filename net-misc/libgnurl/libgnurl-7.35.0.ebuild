@@ -16,7 +16,6 @@ KEYWORDS="~amd64"
 IUSE="adns idn ipv6 kerberos ldap metalink rtmp ssh ssl static-libs test threads"
 IUSE="${IUSE} curl_ssl_axtls curl_ssl_cyassl curl_ssl_gnutls curl_ssl_nss +curl_ssl_openssl curl_ssl_polarssl"
 
-#lead to lots of false negatives
 RESTRICT="test"
 
 RDEPEND="ldap? ( net-nds/openldap )

@@ -19,7 +19,6 @@ IUSE="mysql nls sqlite postgres"
 # IUSE="mysql nls sqlite postgres TeX pulse opus ogg certool zbar gtk+"
 S="${WORKDIR}/${PN}-${MY_PV}"
 
-#tests don't work
 RESTRICT="test"
 
 RDEPEND="
