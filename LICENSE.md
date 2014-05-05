@@ -1,8 +1,6 @@
 The MIT License (MIT)
 ---
 
-The MIT License (MIT)
-
 Copyright (c) 2014 Chlorm
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
