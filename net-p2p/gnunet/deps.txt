@@ -1,0 +1,27 @@
+>=net-libs/libmicrohttpd-0.9.30
+>=media-libs/libextractor-0.6.1
+>=sys-devel/libtool-2.2
+>=dev-libs/libunistring-0.9.1.1
+>=net-dns/libidn-1.13
+>=dev-libs/libgcrypt-1.6.0
+>=net-libs/gnutls-3.2.7 w/libunbound
+libgnurl >=7.34.0 --not in repos
+libglpk >=4.45 --not in repos
+>=dev-libs/openssl-1.0.1g
+TeX Live >=2012 --optional
+libpluse >=2.0 --optional
+libopus >=1.0.1 --optional
+libogg >=1.3.0 --optional
+certool --optional
+python-zbar >=0.10--optional
+libsqlite >=3.8.0
+zlib (any)
+Gtk+ >=2.24 --optional
+libgladeui >=2.24 && =to gtk version --optional
+libqrencode >=3.0 --optional
+
+
+???????WTF
+	>=dev-libs/gmp-4.0.0
+	net-misc/curl (REPLACED BY libgnurl)
+	sys-apps/sed
