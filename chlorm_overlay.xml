@@ -1,12 +1,15 @@
-<?xml version="1.0" ?>                                                                                                     
-<repositories version="1.0">
-	<repo priority="50" quality="experimental" status="unofficial">
-		<name>chlorm</name>
-		<description>Testing software and additional addons.</description>
-		<homepage>http://github.com/Chlorm/</homepage>
-		<owner>
-			<email>codyopel@gmail.org</email>
-		</owner>
-		<source type="git">git://github.com/Chlorm/chlorm_overlay.git</source>
-	</repo>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE repositories SYSTEM "repositories.dtd">                                                                                                   
+<repositories xmlns="" version="1.0">
+    <repo priority="50" quality="experimental" status="unofficial">
+        <name>chlorm</name>
+        <description>Testing software and additional addons.</description>
+        <homepage>http://github.com/Chlorm/chlorm_overlay/</homepage>
+        <owner>
+            <name>Cody Opel</name>
+            <email>codyopel@gmail.org</email>
+        </owner>
+        <source type="git">git://github.com/Chlorm/chlorm_overlay.git</source>
+        <feed>https://github.com/Chlorm/chlorm_overlay/commits/master.atom</feed>
+    </repo>
 </repositories>
