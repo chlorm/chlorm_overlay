@@ -9,14 +9,13 @@ SRC_URI="http://mirrors.chlorm.net/src/${PN)/${P}.tar.xz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+cdparanoia libnotify"
+IUSE=""
 
-DEPEND="media-plugins/gst-plugins-cdparanoia
-		x11-libs/libnotify
-		>=media-libs/gstreamer-1.0
+DEPEND="x11-libs/libnotify
+		media-libs/gstreamer
 		>=media-libs/musicbrainz-5.0.0
-		media-plugins/gst-plugins-meta
 		media-plugins/gst-plugins-good
+		media-plugins/gst-plugins-meta
 		>=x11-libs/gtk+-3.8.0"
 
 src_unpack() {
