@@ -9,8 +9,14 @@ to ensure availability and consistency.
 
 To add this overlay to a Gentoo system, run the following command:
 
+Stable:
 ```
 layman -o https://raw.githubusercontent.com/Chlorm/chlorm_overlay/master/chlorm_overlay.xml -f -a chlorm
 ```
+Testing:
+```
+layman -o https://raw.githubusercontent.com/Chlorm/chlorm_overlay/testing/chlorm_overlay.xml -f -a chlorm_testing
+```
+
 
 Note that you must have both dev-vcs/git and app-portage/layman installed on your system for this to work.
