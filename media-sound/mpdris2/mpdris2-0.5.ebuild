@@ -18,8 +18,8 @@ DEPEND=">=dev-lang/python-2.5
 		>=dev-python/python-mpd-0.5.3"
 
 src_unpack() {
-    if [ "${A}" != "" ]; then
-        unpack ${A}
+    if has ${a}.tar.xz ${A} ; then
+        unpacker ${a}.tar.xz
     fi
 }
 
