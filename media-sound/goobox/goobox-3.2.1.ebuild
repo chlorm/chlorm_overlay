@@ -13,11 +13,11 @@ IUSE="+cdparanoia libnotify"
 
 DEPEND="cdparanoia? ( media-plugins/gst-plugins-cdparanoia )
 		libnotify? ( x11-libs/libnotify )
-		>=media-libs/gstreamer:1.0
+		>=media-libs/gstreamer-1.0
 		>=media-libs/musicbrainz-5.0.0
 		media-plugins/gst-plugins-meta
 		media-plugins/gst-plugins-good
-		>=x11-libs/gtk+-3.8:3"
+		>=x11-libs/gtk+-3.8.0"
 
 src_unpack() {
     if has ${a}.tar.xz ${A} ; then
