@@ -26,7 +26,7 @@ src_unpack {
 }
 
 src_compile() {
-    if [ -f Makefile ] || [ -f GNUmakefile ] || [ -f makefile ]; then
+    if [ -f Makefile ] || [ -f GNUmakefile ] || [ -f makefile ] ; then
         emake || die "emake failed"
     fi
 }
