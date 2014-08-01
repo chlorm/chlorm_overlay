@@ -17,6 +17,12 @@ DEPEND=">=dev-lang/python-2.5
 		>=dev-python/pygobject-2.28.6-r55
 		>=dev-python/python-mpd-0.5.3"
 
+src_unpack() {
+    if [ "${A}" != "" ]; then
+        unpack ${A}
+    fi
+}
+
 src_prepare() {
 	eautoreconf
 }
