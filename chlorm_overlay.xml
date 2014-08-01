@@ -2,7 +2,7 @@
 <!DOCTYPE repositories SYSTEM "repositories.dtd">                                                                                                   
 <repositories xmlns="" version="1.0">
     <repo priority="50" quality="experimental" status="unofficial">
-        <name>chlorm</name>
+        <name>chlorm_testing</name>
         <description>Testing software and additional addons.</description>
         <homepage>http://github.com/Chlorm/chlorm_overlay/</homepage>
         <owner>
