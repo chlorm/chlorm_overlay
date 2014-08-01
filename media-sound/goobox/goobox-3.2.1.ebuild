@@ -2,7 +2,7 @@ EAPI="5"
 
 inherit python autotools eutils
 
-DESCRIPTION="Goobox is a CD player for the GNOME desktop environment"
+DESCRIPTION="Goobox is a CD player" # for the GNOME desktop environment"
 HOMEPAGE="https://people.gnome.org/~paobac/goobox"
 SRC_URI="http://mirrors.chlorm.net/src/${PN)/${P}.tar.xz"
 
@@ -26,7 +26,7 @@ src_unpack {
 }
 
 src_compile() {
-    if [ -f Makefile ] || [ -f GNUmakefile ] || [ -f makefile ]; then
+    if [ -f Makefile ] || [ -f GNUmakefile ] || [ -f makefile ] ; then
         emake || die "emake failed"
     fi
 }
