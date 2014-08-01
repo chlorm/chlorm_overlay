@@ -19,20 +19,16 @@ DEPEND=">=media-libs/gstreamer:1.0
 	>=x11-libs/gtk+-3.8:3
 	libnotify? ( x11-libs/libnotify )"
 
-src_unpack {
+src_unpack() {
     if has ${a}.tar.xz ${A} ; then
         unpacker ${a}.tar.xz
     fi
 }
 
-src_compile() {
-    if [ -f Makefile ] || [ -f GNUmakefile ] || [ -f makefile ] ; then
-        emake || die "emake failed"
-    fi
+src_prepare() {
+	eautoreconf
 }
 
 src_install() {
-	if [ -f Makefile ] || [ -f GNUmakefile] || [ -f makefile ] ; then
-		emake DESTDIR="${D}" install
-	fi
+	emake install DESTDIR="${D}" || die "Failed to install"
 }
