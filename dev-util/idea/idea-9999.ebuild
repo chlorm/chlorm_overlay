@@ -16,9 +16,10 @@ QA_TEXTRELS="opt/${P}/bin/libbreakgen.so"
 
 KEYWORDS="x86 amd64"
 IUSE=""
-S="${WORKDIR}/${PN}-IU-${MY_PV}"
+# S="${WORKDIR}/${PN}-IU-${MY_PV}"
 
-RDEPEND=">=virtual/jdk-1.6"
+RDEPEND=">=dev-java/groovy-1.7.5
+		>=virtual/jdk-1.6"
 
 src_install() {
 	local dir="/opt/${P}"
