@@ -18,7 +18,7 @@ QA_TEXTRELS="opt/${P}/bin/libbreakgen.so"
 
 KEYWORDS="x86 amd64"
 IUSE=""
-S="${MY_PV}"
+S="${WORK_DIR}/${MY_PV}"
 
 RDEPEND=">=dev-java/groovy-1.7.5
 		>=virtual/jdk-1.6"
