@@ -8,7 +8,7 @@ MY_PV="intellij-community"
 
 DESCRIPTION="IntelliJ IDEA Community Edition Java IDE"
 HOMEPAGE="http://jetbrains.com/idea/"
-EGIT_REPO_URI="git://git.github.com/JetBrains/intellij-community.git"
+EGIT_REPO_URI="git://github.com/JetBrains/intellij-community.git"
 
 LICENSE="Apache-2.0"
 SLOT="0"
