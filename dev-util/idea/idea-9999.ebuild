@@ -2,7 +2,7 @@
 
 EAPI=5
 
-inherit eutils versionator git-r3
+inherit eutils versionator git-2
 
 MY_PV="intellij-community"
 
