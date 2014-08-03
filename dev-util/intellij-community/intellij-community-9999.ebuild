@@ -28,7 +28,7 @@ RDEPEND=">=dev-java/groovy-1.7.5
 src_install() {
 	local dir="/opt/${P}"
 	local exe="${PN}-${SLOT}"
-	newconfd "${FILESDIR}/config-${PN}-${SLOT}" ${PN}-${SLOT}
+	# newconfd "${FILESDIR}/config-${PN}-${SLOT}" ${PN}-${SLOT}
 	# config files
 	insinto "/etc/idea"
 	mv bin/idea.properties bin/${PN}-${SLOT}.properties
