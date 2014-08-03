@@ -6,7 +6,7 @@ inherit eutils systemd
 
 DESCRIPTION="BitTorrent Client using libtorrent"
 HOMEPAGE="http://libtorrent.rakshasa.no/"
-SRC_URI="http://mirrors.chlorm.net/src/${PN}/${P}.tar.bz2"
+SRC_URI="http://mirrors.chlorm.net/src/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
