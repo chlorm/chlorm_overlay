@@ -2,7 +2,7 @@
 
 EAPI=5
 
-inherit eutils systemd
+inherit eutils autotools systemd
 
 DESCRIPTION="BitTorrent Client using libtorrent"
 HOMEPAGE="http://libtorrent.rakshasa.no/"
@@ -36,14 +36,14 @@ src_prepare() {
 	    epatch "${FILESDIR}"/ui_pyroscope.patch
 	    sed -i doc/scripts/update_commands_0.9.sed \
 	        -e "s:':\":g"
-	    sed -i ../command_pyroscope.cc \
+	    sed -i ${FILESDIR}/command_pyroscope.cc \
 	        -e 's:view_filter:view.filter:'
 
-	    for i in ${srcdir}/*.patch; do
+	    for i in ${FILESDIR}/*.patch; do
 	        sed -f doc/scripts/update_commands_0.9.sed -i "$i"
 	        patch -uNp1 -i "$i"
 	    done
-	    for i in ${srcdir}/*.{cc,h}; do
+	    for i in ${FILESDIR}/*.{cc,h}; do
 	        sed -f doc/scripts/update_commands_0.9.sed -i "$i"
 	        ln -s "$i" src
 	    done
