@@ -27,16 +27,13 @@ DEPEND="${COMMON_DEPEND}
 
 DOCS=( doc/rtorrent.rc )
 
-src_unpack() {
-	
-}
 src_prepare() {
 	# bug #358271
 	epatch "${FILESDIR}"/${PN}-0.9.1-ncurses.patch
 	if use pyro ; then
 	    epatch "${FILESDIR}"/ps-ui_pyroscope_0.8.8.patch
 	    epatch "${FILESDIR}"/pyroscope.patch
-	    
+
 	    cd "${S}" && mkdir patches
 	    cp "${FILESDIR}"/command_pyroscope.cc "${S}"/patches/
 	    cp "${FILESDIR}"/ui_pyroscope.cc "${S}"/patches/
