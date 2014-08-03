@@ -41,7 +41,7 @@ src_prepare() {
 	    cp "${FILESDIR}"/ui_pyroscope.h "${S}"/patches/
 
 	    for i in "${S}"/patches/*.{cc,h}; do
-        	ln -nfs $i "${S}"
+        	ln -nfs $i src
     	done
 	fi
 
