@@ -22,6 +22,7 @@ COMMON_DEPEND="~net-libs/libtorrent-0.13.${PV##*.}
 RDEPEND="${COMMON_DEPEND}
 	daemon? ( app-misc/screen )"
 DEPEND="${COMMON_DEPEND}
+	dev-libs/libsigc++
 	test? ( dev-util/cppunit )
 	virtual/pkgconfig"
 
