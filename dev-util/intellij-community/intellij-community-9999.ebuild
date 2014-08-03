@@ -4,8 +4,6 @@ EAPI=5
 
 inherit eutils versionator git-2
 
-MY_PV="intellij-community"
-
 DESCRIPTION="IntelliJ IDEA Community Edition Java IDE"
 HOMEPAGE="http://jetbrains.com/idea/"
 EGIT_REPO_URI="git://github.com/JetBrains/intellij-community.git"
@@ -18,7 +16,7 @@ QA_TEXTRELS="opt/${P}/bin/libbreakgen.so"
 
 KEYWORDS="x86 amd64"
 IUSE=""
-S="${WORK_DIR}/${MY_PV}"
+S="${WORKDIR}/${P}"
 
 RDEPEND=">=dev-java/groovy-1.7.5
 		>=virtual/jdk-1.6"
