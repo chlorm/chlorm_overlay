@@ -34,11 +34,11 @@ src_install() {
 	mv bin/idea.properties bin/${PN}-${SLOT}.properties
 	doins bin/${PN}-${SLOT}.properties
 	rm bin/${PN}-${SLOT}.properties
-	case $ARCH in
-		amd64|ppc64)
-			cat bin/idea64.vmoptions > bin/idea.vmoptions
-			rm bin/idea64.vmoptions
-			;;
+	#case $ARCH in
+	#	amd64|ppc64)
+	#		cat bin/idea64.vmoptions > bin/idea.vmoptions
+	#		rm bin/idea64.vmoptions
+	#		;;
 	esac
 	mv bin/idea.vmoptions bin/${PN}-${SLOT}.vmoptions
 	doins bin/${PN}-${SLOT}.vmoptions
