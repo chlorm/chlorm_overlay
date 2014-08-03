@@ -21,9 +21,9 @@ S="${WORKDIR}/${P}"
 RDEPEND=">=dev-java/groovy-1.7.5
 		>=virtual/jdk-1.6"
 
-src_prepare() {
-	epatch ${FILESDIR}/${PN}-${SLOT}.sh.patch || die
-}
+#src_prepare() {
+#	epatch ${FILESDIR}/${PN}-${SLOT}.sh.patch || die
+#}
 
 src_install() {
 	local dir="/opt/${P}"
