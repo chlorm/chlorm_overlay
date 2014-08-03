@@ -34,8 +34,6 @@ src_prepare() {
 	    epatch "${FILESDIR}"/ps-ui_pyroscope_0.8.8.patch
 	    epatch "${FILESDIR}"/pyroscope.patch
 	    epatch "${FILESDIR}"/ui_pyroscope.patch
-	    sed -i doc/scripts/update_commands_0.9.sed \
-	        -e "s:':\":g"
 	    sed -i ${FILESDIR}/command_pyroscope.cc \
 	        -e 's:view_filter:view.filter:'
 
