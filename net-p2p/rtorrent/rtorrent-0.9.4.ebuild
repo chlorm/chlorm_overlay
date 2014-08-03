@@ -44,6 +44,9 @@ src_prepare() {
 	    for i in "${S}"/patches/*.{cc,h}; do
         	ln -nfs $i src
     	done
+
+	    sed -i configure.ac \
+	        -e "s:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\1\\nAC_DEFINE(RT_HEX_VERSION, 0x000904, for CPP if checks):"
 	fi
 
 	# upstream forgot to include
