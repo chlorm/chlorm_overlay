@@ -34,9 +34,19 @@ src_prepare() {
 	    epatch "${FILESDIR}"/ps-ui_pyroscope_0.8.8.patch
 	    epatch "${FILESDIR}"/pyroscope.patch
 	    epatch "${FILESDIR}"/ui_pyroscope.patch
-	    epatch "${FILESDIR}"/command_pyroscope.cc
-	    epatch "${FILESDIR}"/ui_pyroscope.cc
-	    epatch "${FILESDIR}"/ui_pyroscope.h
+	    sed -i doc/scripts/update_commands_0.9.sed \
+	        -e "s:':\":g"
+	    sed -i ../command_pyroscope.cc \
+	        -e 's:view_filter:view.filter:'
+
+	    for i in ${srcdir}/*.patch; do
+	        sed -f doc/scripts/update_commands_0.9.sed -i "$i"
+	        patch -uNp1 -i "$i"
+	    done
+	    for i in ${srcdir}/*.{cc,h}; do
+	        sed -f doc/scripts/update_commands_0.9.sed -i "$i"
+	        ln -s "$i" src
+	    done
 	fi
 
 	# upstream forgot to include
@@ -44,6 +54,7 @@ src_prepare() {
 }
 
 src_configure() {
+    #patch -Np1 -i "${startdir}/rtorrent.patch"
 	# configure needs bash or script bombs out on some null shift, bug #291229
 	CONFIG_SHELL=${BASH} econf \
 		--disable-dependency-tracking \
