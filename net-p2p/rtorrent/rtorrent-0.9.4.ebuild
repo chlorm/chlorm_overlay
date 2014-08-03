@@ -33,10 +33,10 @@ src_prepare() {
 	if use pyro ; then
 	    epatch "${FILESDIR}"/ps-ui_pyroscope_0.8.8.patch
 	    epatch "${FILESDIR}"/pyroscope.patch
+	    epatch "${FILESDIR}"/ui_pyroscope.patch
 	    epatch "${FILESDIR}"/command_pyroscope.cc
 	    epatch "${FILESDIR}"/ui_pyroscope.cc
 	    epatch "${FILESDIR}"/ui_pyroscope.h
-	    epatch "${FILESDIR}"/ui_pyroscope.patch
 	fi
 
 	# upstream forgot to include
