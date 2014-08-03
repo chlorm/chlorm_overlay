@@ -33,6 +33,7 @@ src_prepare() {
 	if use pyro ; then
 	    epatch "${FILESDIR}"/ps-ui_pyroscope_0.8.8.patch
 	    epatch "${FILESDIR}"/pyroscope.patch
+	    epatch "${FILESDIR}"/ui_pyroscope.patch
 
 	    cd "${S}" && mkdir patches
 	    cp "${FILESDIR}"/command_pyroscope.cc "${S}"/patches/
@@ -42,7 +43,6 @@ src_prepare() {
 	    for i in "${S}"/patches/*.{cc,h}; do
         	ln -nfs $i src
     	done
-	    epatch "${FILESDIR}"/ui_pyroscope.patch
 	fi
 
 	# upstream forgot to include
