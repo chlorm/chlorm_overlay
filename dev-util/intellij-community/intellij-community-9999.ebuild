@@ -39,8 +39,8 @@ src_install() {
 	#		cat bin/idea64.vmoptions > bin/idea.vmoptions
 	#		rm bin/idea64.vmoptions
 	#		;;
-	esac
-	mv bin/idea.vmoptions bin/${PN}-${SLOT}.vmoptions
+	#esac
+	#mv bin/idea.vmoptions bin/${PN}-${SLOT}.vmoptions
 	doins bin/${PN}-${SLOT}.vmoptions
 	rm bin/${PN}-${SLOT}.vmoptions
 	ln -s /etc/idea/${PN}-${SLOT}.properties bin/idea.properties
