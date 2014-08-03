@@ -32,6 +32,10 @@ src_prepare() {
 	# bug #358271
 	epatch "${FILESDIR}"/${PN}-0.9.1-ncurses.patch
 	if use pyro ; then
+
+	    sed -i "${S}"/configure.ac \
+	        -e "s:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\1\\nAC_DEFINE(RT_HEX_VERSION, 0x000904, for CPP if checks):"
+	        	
 	    epatch "${FILESDIR}"/ps-ui_pyroscope_0.8.8.patch
 	    epatch "${FILESDIR}"/pyroscope.patch
 	    epatch "${FILESDIR}"/ui_pyroscope.patch
@@ -45,8 +49,6 @@ src_prepare() {
         	ln -nfs $i src
     	done
 
-	    sed -i "${S}"/configure.ac \
-	        -e \"s:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\1\\nAC_DEFINE(RT_HEX_VERSION, 0x000904, for CPP if checks):\"
 	fi
 
 	# upstream forgot to include
