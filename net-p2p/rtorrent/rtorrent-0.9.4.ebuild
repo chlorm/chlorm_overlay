@@ -27,24 +27,25 @@ DEPEND="${COMMON_DEPEND}
 
 DOCS=( doc/rtorrent.rc )
 
+src_unpack() {
+	
+}
 src_prepare() {
 	# bug #358271
 	epatch "${FILESDIR}"/${PN}-0.9.1-ncurses.patch
 	if use pyro ; then
 	    epatch "${FILESDIR}"/ps-ui_pyroscope_0.8.8.patch
 	    epatch "${FILESDIR}"/pyroscope.patch
-	    epatch "${FILESDIR}"/ui_pyroscope.patch
-	    sed -i ${FILESDIR}/command_pyroscope.cc \
-	        -e 's:view_filter:view.filter:'
+	    
+	    cd "${S}" && mkdir patches
+	    cp "${FILESDIR}"/command_pyroscope.cc "${S}"/patches/
+	    cp "${FILESDIR}"/ui_pyroscope.cc "${S}"/patches/
+	    cp "${FILESDIR}"/ui_pyroscope.h "${S}"/patches/
 
-	    for i in ${FILESDIR}/*.patch; do
-	        sed -f doc/scripts/update_commands_0.9.sed -i "$i"
-	        patch -uNp1 -i "$i"
-	    done
-	    for i in ${FILESDIR}/*.{cc,h}; do
-	        sed -f doc/scripts/update_commands_0.9.sed -i "$i"
-	        ln -s "$i" src
-	    done
+	    for i in "${S}"/patches/*.{cc,h}; do
+        	ln -nfs $i src
+    	done
+	    epatch "${FILESDIR}"/ui_pyroscope.patch
 	fi
 
 	# upstream forgot to include
