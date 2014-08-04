@@ -6,17 +6,17 @@ index 82155b7..3e163b3 100644
  
    CMD2_VAR_BOOL    ("log.handshake", false);
  
-+  CMD2_ANY         ("colors.color_fg_complete",       std::bind(&ui::Root::get_color_fg_complete,   control->ui()));
-+  CMD2_ANY_VALUE_V ("colors.color_fg_complete.set",   std::bind(&ui::Root::set_color_fg_complete,   control->ui(), std::placeholders::_2));
-+  CMD2_ANY         ("colors.color_bg_complete",       std::bind(&ui::Root::get_color_bg_complete,   control->ui()));
-+  CMD2_ANY_VALUE_V ("colors.color_bg_complete.set",   std::bind(&ui::Root::set_color_bg_complete,   control->ui(), std::placeholders::_2));
-+  CMD2_ANY         ("colors.color_fg_active",     std::bind(&ui::Root::get_color_fg_active, control->ui()));
-+  CMD2_ANY_VALUE_V ("colors.color_fg_active.set", std::bind(&ui::Root::set_color_fg_active, control->ui(), std::placeholders::_2));
-+  CMD2_ANY         ("colors.color_bg_active",     std::bind(&ui::Root::get_active_bg_color, control->ui()));
-+  CMD2_ANY_VALUE_V ("colors.color_bg_active.set", std::bind(&ui::Root::set_active_bg_color, control->ui(), std::placeholders::_2));
++  CMD2_ANY         ("colors.color_fg_complete",       tr1::bind(&ui::Root::get_color_fg_complete,   control->ui()));
++  CMD2_ANY_VALUE_V ("colors.color_fg_complete.set",   tr1::bind(&ui::Root::set_color_fg_complete,   control->ui(), tr1::placeholders::_2));
++  CMD2_ANY         ("colors.color_bg_complete",       tr1::bind(&ui::Root::get_color_bg_complete,   control->ui()));
++  CMD2_ANY_VALUE_V ("colors.color_bg_complete.set",   tr1::bind(&ui::Root::set_color_bg_complete,   control->ui(), tr1::placeholders::_2));
++  CMD2_ANY         ("colors.color_fg_active",     tr1::bind(&ui::Root::get_color_fg_active, control->ui()));
++  CMD2_ANY_VALUE_V ("colors.color_fg_active.set", tr1::bind(&ui::Root::set_color_fg_active, control->ui(), tr1::placeholders::_2));
++  CMD2_ANY         ("colors.color_bg_active",     tr1::bind(&ui::Root::get_active_bg_color, control->ui()));
++  CMD2_ANY_VALUE_V ("colors.color_bg_active.set", tr1::bind(&ui::Root::set_active_bg_color, control->ui(), tr1::placeholders::_2));
 +
-   // CMD2_ANY_STRING  ("encoding_list",    std::bind(&apply_encoding_list, std::placeholders::_2));
-   CMD2_ANY_STRING  ("encoding.add", std::bind(&apply_encoding_list, std::placeholders::_2));
+   // CMD2_ANY_STRING  ("encoding_list",    tr1::bind(&apply_encoding_list, tr1::placeholders::_2));
+   CMD2_ANY_STRING  ("encoding.add", tr1::bind(&apply_encoding_list, tr1::placeholders::_2));
  
 diff --git a/src/display/canvas.cc b/src/display/canvas.cc
 index 4394b89..61abf7b 100644
