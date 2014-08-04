@@ -43,7 +43,7 @@ src_prepare() {
 	    cp "${FILESDIR}"/ui_pyroscope.h "${S}"/patches/
 
 	    sed -i "${S}"/configure.ac \
-	        -e "s:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\1\\nAC_DEFINE(RT_HEX_VERSION, 0x000904, for CPP if checks):"
+	        -e 's:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\1\\nAC_DEFINE(RT_HEX_VERSION, 0x000904, for CPP if checks):'
 
 	    for i in "${S}"/patches/*.{cc,h}; do
         	ln -nfs $i src
