@@ -3,7 +3,7 @@ rTorrent
 
 rtorrent custom color patch
 
-[options]
+[rtorrent.rc color configuration variables]
 
 ```
 color_bg_active = 8 [background]
