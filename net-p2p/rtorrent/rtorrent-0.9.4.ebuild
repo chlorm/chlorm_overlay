@@ -2,7 +2,7 @@
 
 EAPI=5
 
-inherit eutils autotools systemd
+inherit eutils systemd
 
 DESCRIPTION="BitTorrent Client using libtorrent"
 HOMEPAGE="http://libtorrent.rakshasa.no/"
@@ -11,7 +11,7 @@ SRC_URI="http://mirrors.chlorm.net/src/${PN}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc64 ~amd64-linux ~arm-linux"
-IUSE="daemon debug ipv6 pyro selinux test xmlrpc"
+IUSE="color daemon debug ipv6 selinux test xmlrpc"
 
 COMMON_DEPEND="~net-libs/libtorrent-0.13.${PV##*.}
 	>=dev-libs/libsigc++-2.2.2:2
@@ -31,37 +31,9 @@ src_prepare() {
 	# bug #358271
 	epatch "${FILESDIR}"/${PN}-0.9.1-ncurses.patch
 
-	if use pyro ; then
-		epatch "${FILESDIR}"/${PN}-0.9.2-canvas-fix.patch
+	if use color ; then
+		epatch "${FILESDIR}"/${P}_color.patch
 	fi
-#	if use pyro ; then
-#
-#	    epatch "${FILESDIR}"/ps-ui_pyroscope_0.8.8.patch
-#	    epatch "${FILESDIR}"/pyroscope.patch
-#	    epatch "${FILESDIR}"/ui_pyroscope.patch
-#
-#	    mkdir "${S}"/patches
-#	    cp "${FILESDIR}"/command_pyroscope.cc "${S}"/patches
-#	    cp "${FILESDIR}"/ui_pyroscope.cc "${S}"/patches
-#	    cp "${FILESDIR}"/ui_pyroscope.h "${S}"/patches
-#
-#	    sed -i \
-#	        -e 's:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\\nAC_DEFINE(RT_HEX_VERSION, 0x000904, for CPP if checks):' \
-#        	"${S}"/configure.ac > ${S}/configure.ac \
-#        	|| die "Version failed"
-#
-#	    sed -i \
-#        	-e 's:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\\nAC_DEFINE(API_VERSION, 0, api version):' \
-#        	"${S}"/configure.ac > ${S}/configure.ac \
-#        	|| die "API version failed"
-#
-#	    for i in "${S}"/patches/*.{cc,h}; do
-#        	ln -nfs $i src
-#    	done
-#
-#    	eautoreconf
-#
-#	fi
 
 	# upstream forgot to include
 	cp "${FILESDIR}"/rtorrent.1 "${S}"/doc/ || die
