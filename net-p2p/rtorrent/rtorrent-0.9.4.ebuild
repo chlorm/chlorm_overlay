@@ -32,7 +32,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-0.9.1-ncurses.patch
 
 	if use pyro ; then
-		epatch "${FILESDIR}"/${P}-canvas-fix.patch
+		epatch "${FILESDIR}"/${PN}-0.9.2-canvas-fix.patch
 	fi
 #	if use pyro ; then
 #

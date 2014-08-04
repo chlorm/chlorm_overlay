@@ -1,6 +1,6 @@
-diff -crB ./src/command_network.cc ../rtorrent-0.9.2/src/command_network.cc
-*** ./src/command_network.cc	2012-03-20 20:25:05.000000000 +0400
---- ../rtorrent-0.9.2/src/command_network.cc	2012-05-06 00:35:03.249954526 +0400
+diff -crB src/command_network.cc src/command_network.cc
+*** src/command_network.cc	2012-03-20 20:25:05.000000000 +0400
+--- src/command_network.cc	2012-05-06 00:35:03.249954526 +0400
 ***************
 *** 241,246 ****
 --- 241,255 ----
@@ -19,9 +19,9 @@ diff -crB ./src/command_network.cc ../rtorrent-0.9.2/src/command_network.cc
     // CMD2_ANY_STRING  ("encoding_list",    tr1::bind(&apply_encoding_list, tr1::placeholders::_2));
     CMD2_ANY_STRING  ("encoding.add", tr1::bind(&apply_encoding_list, tr1::placeholders::_2));
 
-diff -crB ./src/display/canvas.cc ../rtorrent-0.9.2/src/display/canvas.cc
-*** ./src/display/canvas.cc	2012-01-19 14:18:01.000000000 +0400
---- ../rtorrent-0.9.2/src/display/canvas.cc	2012-05-06 00:06:25.656718308 +0400
+diff -crB src/display/canvas.cc src/display/canvas.cc
+*** src/display/canvas.cc	2012-01-19 14:18:01.000000000 +0400
+--- src/display/canvas.cc	2012-05-06 00:06:25.656718308 +0400
 ***************
 *** 99,104 ****
 --- 99,108 ----
@@ -35,9 +35,9 @@ diff -crB ./src/display/canvas.cc ../rtorrent-0.9.2/src/display/canvas.cc
     raw();
     noecho();
     nodelay(stdscr, TRUE);
-diff -crB ./src/display/window_download_list.cc ../rtorrent-0.9.2/src/display/window_download_list.cc
-*** ./src/display/window_download_list.cc	2012-02-14 07:32:01.000000000 +0400
---- ../rtorrent-0.9.2/src/display/window_download_list.cc	2012-05-06 00:16:51.209242337 +0400
+diff -crB src/display/window_download_list.cc src/display/window_download_list.cc
+*** src/display/window_download_list.cc	2012-02-14 07:32:01.000000000 +0400
+--- src/display/window_download_list.cc	2012-05-06 00:16:51.209242337 +0400
 ***************
 *** 37,42 ****
 --- 37,43 ----
@@ -122,9 +122,9 @@ diff -crB ./src/display/window_download_list.cc ../rtorrent-0.9.2/src/display/wi
 + }
 +
   }
-diff -crB ./src/display/window_download_list.h ../rtorrent-0.9.2/src/display/window_download_list.h
-*** ./src/display/window_download_list.h	2012-01-19 14:18:01.000000000 +0400
---- ../rtorrent-0.9.2/src/display/window_download_list.h	2012-05-06 00:17:54.384949888 +0400
+diff -crB src/display/window_download_list.h src/display/window_download_list.h
+*** src/display/window_download_list.h	2012-01-19 14:18:01.000000000 +0400
+--- src/display/window_download_list.h	2012-05-06 00:17:54.384949888 +0400
 ***************
 *** 60,65 ****
 --- 60,70 ----
@@ -139,9 +139,9 @@ diff -crB ./src/display/window_download_list.h ../rtorrent-0.9.2/src/display/win
   private:
     core::View*         m_view;
 
-diff -crB ./src/main.cc ../rtorrent-0.9.2/src/main.cc
-*** ./src/main.cc	2012-03-20 19:09:58.000000000 +0400
---- ../rtorrent-0.9.2/src/main.cc	2012-05-06 00:18:35.825432600 +0400
+diff -crB src/main.cc src/main.cc
+*** src/main.cc	2012-03-20 19:09:58.000000000 +0400
+--- src/main.cc	2012-05-06 00:18:35.825432600 +0400
 ***************
 *** 400,405 ****
 --- 400,410 ----
@@ -156,9 +156,9 @@ diff -crB ./src/main.cc ../rtorrent-0.9.2/src/main.cc
       CMD2_REDIRECT_GENERIC("dht",      "dht.mode.set");
       CMD2_REDIRECT_GENERIC("dht_port", "dht.port.set");
 
-diff -crB ./src/ui/download_list.cc ../rtorrent-0.9.2/src/ui/download_list.cc
-*** ./src/ui/download_list.cc	2012-03-13 16:10:49.000000000 +0400
---- ../rtorrent-0.9.2/src/ui/download_list.cc	2012-05-06 00:19:37.916122052 +0400
+diff -crB src/ui/download_list.cc src/ui/download_list.cc
+*** src/ui/download_list.cc	2012-03-13 16:10:49.000000000 +0400
+--- src/ui/download_list.cc	2012-05-06 00:19:37.916122052 +0400
 ***************
 *** 138,143 ****
 --- 138,149 ----
@@ -174,9 +174,9 @@ diff -crB ./src/ui/download_list.cc ../rtorrent-0.9.2/src/ui/download_list.cc
   void
   DownloadList::activate_display(Display displayType) {
     if (!is_active())
-diff -crB ./src/ui/download_list.h ../rtorrent-0.9.2/src/ui/download_list.h
-*** ./src/ui/download_list.h	2012-01-19 14:18:01.000000000 +0400
---- ../rtorrent-0.9.2/src/ui/download_list.h	2012-05-06 00:20:00.377223859 +0400
+diff -crB src/ui/download_list.h src/ui/download_list.h
+*** src/ui/download_list.h	2012-01-19 14:18:01.000000000 +0400
+--- src/ui/download_list.h	2012-05-06 00:20:00.377223859 +0400
 ***************
 *** 101,106 ****
 --- 101,107 ----
@@ -187,9 +187,9 @@ diff -crB ./src/ui/download_list.h ../rtorrent-0.9.2/src/ui/download_list.h
     void                set_current_view(const std::string& name);
 
     void                slot_open_uri(SlotOpenUri s) { m_slotOpenUri = s; }
-diff -crB ./src/ui/element_download_list.h ../rtorrent-0.9.2/src/ui/element_download_list.h
-*** ./src/ui/element_download_list.h	2012-01-19 14:18:01.000000000 +0400
---- ../rtorrent-0.9.2/src/ui/element_download_list.h	2012-05-06 00:20:39.136381275 +0400
+diff -crB src/ui/element_download_list.h src/ui/element_download_list.h
+*** src/ui/element_download_list.h	2012-01-19 14:18:01.000000000 +0400
+--- src/ui/element_download_list.h	2012-05-06 00:20:39.136381275 +0400
 ***************
 *** 60,65 ****
 --- 60,66 ----
@@ -200,9 +200,9 @@ diff -crB ./src/ui/element_download_list.h ../rtorrent-0.9.2/src/ui/element_down
     void                set_view(core::View* l);
 
     void                receive_command(const char* cmd);
-diff -crB ./src/ui/root.cc ../rtorrent-0.9.2/src/ui/root.cc
-*** ./src/ui/root.cc	2012-01-19 14:18:01.000000000 +0400
---- ../rtorrent-0.9.2/src/ui/root.cc	2012-05-06 00:22:56.284169060 +0400
+diff -crB src/ui/root.cc src/ui/root.cc
+*** src/ui/root.cc	2012-01-19 14:18:01.000000000 +0400
+--- src/ui/root.cc	2012-05-06 00:22:56.284169060 +0400
 ***************
 *** 45,50 ****
 --- 45,51 ----
@@ -294,9 +294,9 @@ diff -crB ./src/ui/root.cc ../rtorrent-0.9.2/src/ui/root.cc
 + }
 +
   }
-diff -crB ./src/ui/root.h ../rtorrent-0.9.2/src/ui/root.h
-*** ./src/ui/root.h	2012-01-19 14:18:01.000000000 +0400
---- ../rtorrent-0.9.2/src/ui/root.h	2012-05-06 00:23:45.134981128 +0400
+diff -crB src/ui/root.h src/ui/root.h
+*** src/ui/root.h	2012-01-19 14:18:01.000000000 +0400
+--- src/ui/root.h	2012-05-06 00:23:45.134981128 +0400
 ***************
 *** 83,88 ****
 --- 83,97 ----
@@ -313,7 +313,7 @@ diff -crB ./src/ui/root.h ../rtorrent-0.9.2/src/ui/root.h
 +   void                set_active_bg_color(int64_t color);
 +
     void                adjust_down_throttle(int throttle);
-    void                adjust_up_throttle(int throttle);
+    void                 adjust_up_throttle(int throttle);
 
 ***************
 *** 105,110 ****
