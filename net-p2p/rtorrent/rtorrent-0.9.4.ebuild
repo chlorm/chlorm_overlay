@@ -56,7 +56,7 @@ src_prepare() {
 #        	ln -nfs $i src
 #    	done
 
-    	eautoreconf
+#    	eautoreconf
 
 	fi
 
