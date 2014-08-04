@@ -22,7 +22,6 @@ COMMON_DEPEND="~net-libs/libtorrent-0.13.${PV##*.}
 RDEPEND="${COMMON_DEPEND}
 	daemon? ( app-misc/screen )"
 DEPEND="${COMMON_DEPEND}
-	dev-libs/libsigc++
 	test? ( dev-util/cppunit )
 	virtual/pkgconfig"
 
@@ -31,34 +30,38 @@ DOCS=( doc/rtorrent.rc )
 src_prepare() {
 	# bug #358271
 	epatch "${FILESDIR}"/${PN}-0.9.1-ncurses.patch
+
 	if use pyro ; then
-
-	    epatch "${FILESDIR}"/ps-ui_pyroscope_0.8.8.patch
-	    epatch "${FILESDIR}"/pyroscope.patch
-	    epatch "${FILESDIR}"/ui_pyroscope.patch
-
-	    mkdir "${S}"/patches
-	    cp "${FILESDIR}"/command_pyroscope.cc "${S}"/patches
-	    cp "${FILESDIR}"/ui_pyroscope.cc "${S}"/patches
-	    cp "${FILESDIR}"/ui_pyroscope.h "${S}"/patches
-
-	    sed -i \
-	        -e 's:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\\nAC_DEFINE(RT_HEX_VERSION, 0x000904, for CPP if checks):' \
-        	"${S}"/configure.ac > ${S}/configure.ac \
-        	|| die "Version failed"
-
-	    sed -i \
-        	-e 's:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\\nAC_DEFINE(API_VERSION, 0, api version):' \
-        	"${S}"/configure.ac > ${S}/configure.ac \
-        	|| die "API version failed"
-
+		epatch "${FILESDIR}"/${P}-canvas-fix.patch
+	fi
+#	if use pyro ; then
+#
+#	    epatch "${FILESDIR}"/ps-ui_pyroscope_0.8.8.patch
+#	    epatch "${FILESDIR}"/pyroscope.patch
+#	    epatch "${FILESDIR}"/ui_pyroscope.patch
+#
+#	    mkdir "${S}"/patches
+#	    cp "${FILESDIR}"/command_pyroscope.cc "${S}"/patches
+#	    cp "${FILESDIR}"/ui_pyroscope.cc "${S}"/patches
+#	    cp "${FILESDIR}"/ui_pyroscope.h "${S}"/patches
+#
+#	    sed -i \
+#	        -e 's:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\\nAC_DEFINE(RT_HEX_VERSION, 0x000904, for CPP if checks):' \
+#        	"${S}"/configure.ac > ${S}/configure.ac \
+#        	|| die "Version failed"
+#
+#	    sed -i \
+#        	-e 's:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\\nAC_DEFINE(API_VERSION, 0, api version):' \
+#        	"${S}"/configure.ac > ${S}/configure.ac \
+#        	|| die "API version failed"
+#
 #	    for i in "${S}"/patches/*.{cc,h}; do
 #        	ln -nfs $i src
 #    	done
-
+#
 #    	eautoreconf
-
-	fi
+#
+#	fi
 
 	# upstream forgot to include
 	cp "${FILESDIR}"/rtorrent.1 "${S}"/doc/ || die
