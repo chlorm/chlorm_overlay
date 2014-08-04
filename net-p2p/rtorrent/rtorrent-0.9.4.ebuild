@@ -37,17 +37,11 @@ src_prepare() {
 	    epatch "${FILESDIR}"/pyroscope.patch
 	    epatch "${FILESDIR}"/ui_pyroscope.patch
 
-	    cd "${S}" && mkdir patches
-	    cp "${FILESDIR}"/command_pyroscope.cc "${S}"/patches/
-	    cp "${FILESDIR}"/ui_pyroscope.cc "${S}"/patches/
-	    cp "${FILESDIR}"/ui_pyroscope.h "${S}"/patches/
+	    mkdir "${S}"/patches
+	    cp "${FILESDIR}"/command_pyroscope.cc "${S}"/patches
+	    cp "${FILESDIR}"/ui_pyroscope.cc "${S}"/patches
+	    cp "${FILESDIR}"/ui_pyroscope.h "${S}"/patches
 
-#	    sed -i "${S}"/configure.ac \
-#	        -e 's:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\1\\nAC_DEFINE(RT_HEX_VERSION, 0x000904, for CPP if checks):'
-#
-#	    sed -i "${S}"/configure.ac \
-#        	-e 's:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\1\\nAC_DEFINE(API_VERSION, 0, api version):'
-#
 	    sed -i \
 	        -e 's:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\\nAC_DEFINE(RT_HEX_VERSION, 0x000904, for CPP if checks):' \
         	"${S}"/configure.ac > ${S}/configure.ac \
