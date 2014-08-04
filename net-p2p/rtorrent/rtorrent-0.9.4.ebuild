@@ -42,6 +42,11 @@ src_prepare() {
 	    cp "${FILESDIR}"/ui_pyroscope.cc "${S}"/patches/
 	    cp "${FILESDIR}"/ui_pyroscope.h "${S}"/patches/
 
+		RT_HEX_VERSION=$(printf "0x%02X%02X%02X" ${RT_VERSION//./ })
+		    $SED_I "s:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\1 AC_DEFINE(RT_HEX_VERSION, $RT_HEX_VERSION, for CPP if checks):" rtorrent-$RT_VERSION/configure.ac
+		    grep "AC_DEFINE.*API_VERSION" rtorrent-$RT_VERSION/configure.ac >/dev/null || \
+		        $SED_I "s:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\1 AC_DEFINE(API_VERSION, 0, api version):" rtorrent-$RT_VERSION/configure.ac
+
 	    for i in "${S}"/patches/*.{cc,h}; do
         	ln -nfs $i src
     	done
