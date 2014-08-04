@@ -62,7 +62,7 @@ src_prepare() {
         	ln -nfs $i src
     	done
 
-    	./autogen.sh || die "Autogen failed"
+    	eautoreconf
 
 	fi
 
