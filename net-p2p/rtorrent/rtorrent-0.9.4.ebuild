@@ -46,13 +46,15 @@ src_prepare() {
 #	        -e 's:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\1\\nAC_DEFINE(RT_HEX_VERSION, 0x000904, for CPP if checks):'
 #
 #	    sed -i "${S}"/configure.ac \
-#        	sed 's:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\1\\nAC_DEFINE(API_VERSION, 0, api version):'
+#        	-e 's:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\1\\nAC_DEFINE(API_VERSION, 0, api version):'
 #
-	    sed -i "${S}"/configure.ac \
-	        -e 's:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\1\\nAC_DEFINE(RT_HEX_VERSION, 0x000904, for CPP if checks):'
+	    sed -i \
+	        -e 's:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\1\\nAC_DEFINE(RT_HEX_VERSION, 0x000904, for CPP if checks):' \
+        	configure.ac || die "Version failed"
 
-	    sed -i "${S}"/configure.ac \
-        	-e 's:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\1\\nAC_DEFINE(API_VERSION, 0, api version):'
+	    sed -i \
+        	-e 's:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\1\\nAC_DEFINE(API_VERSION, 0, api version):' \
+        	configure.ac || die "API version failed"
 
 	    for i in "${S}"/patches/*.{cc,h}; do
         	ln -nfs $i src
