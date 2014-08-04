@@ -6,17 +6,17 @@ index 82155b7..3e163b3 100644
  
    CMD2_VAR_BOOL    ("log.handshake", false);
  
-+  CMD2_ANY         ("colors.done_fg_color",       tr1::bind(&ui::Root::get_done_fg_color,   control->ui()));
-+  CMD2_ANY_VALUE_V ("colors.done_fg_color.set",   tr1::bind(&ui::Root::set_done_fg_color,   control->ui(), tr1::placeholders::_2));
-+  CMD2_ANY         ("colors.done_bg_color",       tr1::bind(&ui::Root::get_done_bg_color,   control->ui()));
-+  CMD2_ANY_VALUE_V ("colors.done_bg_color.set",   tr1::bind(&ui::Root::set_done_bg_color,   control->ui(), tr1::placeholders::_2));
-+  CMD2_ANY         ("colors.active_fg_color",     tr1::bind(&ui::Root::get_active_fg_color, control->ui()));
-+  CMD2_ANY_VALUE_V ("colors.active_fg_color.set", tr1::bind(&ui::Root::set_active_fg_color, control->ui(), tr1::placeholders::_2));
-+  CMD2_ANY         ("colors.active_bg_color",     tr1::bind(&ui::Root::get_active_bg_color, control->ui()));
-+  CMD2_ANY_VALUE_V ("colors.active_bg_color.set", tr1::bind(&ui::Root::set_active_bg_color, control->ui(), tr1::placeholders::_2));
++  CMD2_ANY         ("colors.color_fg_complete",       std::bind(&ui::Root::get_color_fg_complete,   control->ui()));
++  CMD2_ANY_VALUE_V ("colors.color_fg_complete.set",   std::bind(&ui::Root::set_color_fg_complete,   control->ui(), std::placeholders::_2));
++  CMD2_ANY         ("colors.color_bg_complete",       std::bind(&ui::Root::get_color_bg_complete,   control->ui()));
++  CMD2_ANY_VALUE_V ("colors.color_bg_complete.set",   std::bind(&ui::Root::set_color_bg_complete,   control->ui(), std::placeholders::_2));
++  CMD2_ANY         ("colors.color_fg_active",     std::bind(&ui::Root::get_color_fg_active, control->ui()));
++  CMD2_ANY_VALUE_V ("colors.color_fg_active.set", std::bind(&ui::Root::set_color_fg_active, control->ui(), std::placeholders::_2));
++  CMD2_ANY         ("colors.color_bg_active",     std::bind(&ui::Root::get_active_bg_color, control->ui()));
++  CMD2_ANY_VALUE_V ("colors.color_bg_active.set", std::bind(&ui::Root::set_active_bg_color, control->ui(), std::placeholders::_2));
 +
-   // CMD2_ANY_STRING  ("encoding_list",    tr1::bind(&apply_encoding_list, tr1::placeholders::_2));
-   CMD2_ANY_STRING  ("encoding.add", tr1::bind(&apply_encoding_list, tr1::placeholders::_2));
+   // CMD2_ANY_STRING  ("encoding_list",    std::bind(&apply_encoding_list, std::placeholders::_2));
+   CMD2_ANY_STRING  ("encoding.add", std::bind(&apply_encoding_list, std::placeholders::_2));
  
 diff --git a/src/display/canvas.cc b/src/display/canvas.cc
 index 4394b89..61abf7b 100644
@@ -79,7 +79,7 @@ index 0b40713..93b0a8f 100644
 +}
 +
 +void
-+WindowDownloadList::set_done_fg_color(int64_t color) {
++WindowDownloadList::set_color_fg_complete(int64_t color) {
 +  short fg, bg;
 +  pair_content(2, &fg, &bg);
 +  if( color < 0 ) color = -1;
@@ -88,7 +88,7 @@ index 0b40713..93b0a8f 100644
 +}
 +
 +void
-+WindowDownloadList::set_done_bg_color(int64_t color) {
++WindowDownloadList::set_color_bg_complete(int64_t color) {
 +  short fg, bg;
 +  pair_content(2, &fg, &bg);
 +  if( color < 0 ) color = -1;
@@ -97,7 +97,7 @@ index 0b40713..93b0a8f 100644
 +}
 +
 +void
-+WindowDownloadList::set_active_fg_color(int64_t color) {
++WindowDownloadList::set_color_fg_active(int64_t color) {
 +  short fg, bg;
 +  pair_content(1, &fg, &bg);
 +  if( color < 0 ) color = -1;
@@ -123,9 +123,9 @@ index 0fed0c1..0e8731b 100644
  
    void                set_view(core::View* l);
  
-+  void                set_done_fg_color(int64_t color);
-+  void                set_done_bg_color(int64_t color);
-+  void                set_active_fg_color(int64_t color);
++  void                set_color_fg_complete(int64_t color);
++  void                set_color_bg_complete(int64_t color);
++  void                set_color_fg_active(int64_t color);
 +  void                set_active_bg_color(int64_t color);
 +
  private:
@@ -139,10 +139,10 @@ index 796a96a..9ab8f0d 100644
      CMD2_REDIRECT        ("ip",         "network.local_address.set");
      CMD2_REDIRECT        ("port_range", "network.port_range.set");
  
-+    CMD2_REDIRECT       ("done_fg_color", "colors.done_fg_color.set");
-+    CMD2_REDIRECT       ("done_bg_color", "colors.done_bg_color.set");
-+    CMD2_REDIRECT       ("active_fg_color", "colors.active_fg_color.set");
-+    CMD2_REDIRECT       ("active_bg_color", "colors.active_bg_color.set");
++    CMD2_REDIRECT       ("color_fg_complete", "colors.color_fg_complete.set");
++    CMD2_REDIRECT       ("color_bg_complete", "colors.color_bg_complete.set");
++    CMD2_REDIRECT       ("color_fg_active", "colors.color_fg_active.set");
++    CMD2_REDIRECT       ("color_bg_active", "colors.color_bg_active.set");
 +
      CMD2_REDIRECT_GENERIC("dht",      "dht.mode.set");
      CMD2_REDIRECT_GENERIC("dht_port", "dht.port.set");
@@ -205,10 +205,10 @@ index d109976..2461b19 100644
    m_windowInput(NULL),
 -  m_windowStatusbar(NULL) {
 +  m_windowStatusbar(NULL),
-+  done_fg_color(-1),
-+  done_bg_color(-1),
-+  active_fg_color(-1),
-+  active_bg_color(-1) {
++  color_fg_complete(-1),
++  color_bg_complete(-1),
++  color_fg_active(-1),
++  color_bg_active(-1) {
  }
  
  void
@@ -216,10 +216,10 @@ index d109976..2461b19 100644
    setup_keys();
  
    m_downloadList->activate(rootFrame->frame(1));
-+  m_downloadList->current_window_list()->set_done_fg_color(done_fg_color);
-+  m_downloadList->current_window_list()->set_done_bg_color(done_bg_color);
-+  m_downloadList->current_window_list()->set_active_fg_color(active_fg_color);
-+  m_downloadList->current_window_list()->set_active_bg_color(active_bg_color);
++  m_downloadList->current_window_list()->set_color_fg_complete(color_fg_complete);
++  m_downloadList->current_window_list()->set_color_bg_complete(color_bg_complete);
++  m_downloadList->current_window_list()->set_color_fg_active(color_fg_active);
++  m_downloadList->current_window_list()->set_active_bg_color(color_bg_active);
  }
  
  void
@@ -228,43 +228,43 @@ index d109976..2461b19 100644
  }
  
 +int
-+Root::get_done_fg_color() {
-+  return done_fg_color;
++Root::get_color_fg_complete() {
++  return color_fg_complete;
 +}
 +
 +void
-+Root::set_done_fg_color(int64_t color) {
-+  done_fg_color = color;
++Root::set_color_fg_complete(int64_t color) {
++  color_fg_complete = color;
 +}
 +
 +int
-+Root::get_done_bg_color() {
-+  return done_bg_color;
++Root::get_color_bg_complete() {
++  return color_bg_complete;
 +}
 +
 +void
-+Root::set_done_bg_color(int64_t color) {
-+  done_bg_color = color;
++Root::set_color_bg_complete(int64_t color) {
++  color_bg_complete = color;
 +}
 +
 +int
-+Root::get_active_fg_color() {
-+  return active_fg_color;
++Root::get_color_fg_active() {
++  return color_fg_active;
 +}
 +
 +void
-+Root::set_active_fg_color(int64_t color) {
-+  active_fg_color = color;
++Root::set_color_fg_active(int64_t color) {
++  color_fg_active = color;
 +}
 +
 +int
 +Root::get_active_bg_color() {
-+  return active_bg_color;
++  return color_bg_active;
 +}
 +
 +void
 +Root::set_active_bg_color(int64_t color) {
-+  active_bg_color = color;
++  color_bg_active = color;
 +}
 +
  }
@@ -276,12 +276,12 @@ index cbc5ff4..6558d77 100644
    void                set_down_throttle_i64(int64_t throttle) { set_down_throttle(throttle >> 10); }
    void                set_up_throttle_i64(int64_t throttle)   { set_up_throttle(throttle >> 10); }
  
-+  int                 get_done_fg_color();
-+  void                set_done_fg_color(int64_t color);
-+  int                 get_done_bg_color();
-+  void                set_done_bg_color(int64_t color);
-+  int                 get_active_fg_color();
-+  void                set_active_fg_color(int64_t color);
++  int                 get_color_fg_complete();
++  void                set_color_fg_complete(int64_t color);
++  int                 get_color_bg_complete();
++  void                set_color_bg_complete(int64_t color);
++  int                 get_color_fg_active();
++  void                set_color_fg_active(int64_t color);
 +  int                 get_active_bg_color();
 +  void                set_active_bg_color(int64_t color);
 +
@@ -293,10 +293,10 @@ index cbc5ff4..6558d77 100644
  
    input::Bindings     m_bindings;
 +
-+  int64_t             done_fg_color;
-+  int64_t             done_bg_color;
-+  int64_t             active_fg_color;
-+  int64_t             active_bg_color;
++  int64_t             color_fg_complete;
++  int64_t             color_bg_complete;
++  int64_t             color_fg_active;
++  int64_t             color_bg_active;
  };
  
  }
