@@ -36,6 +36,7 @@ src_prepare() {
 	    epatch "${FILESDIR}"/ps-ui_pyroscope_0.8.8.patch
 	    epatch "${FILESDIR}"/pyroscope.patch
 	    epatch "${FILESDIR}"/ui_pyroscope.patch
+	    eautoreconf
 
 	    cd "${S}" && mkdir patches
 	    cp "${FILESDIR}"/command_pyroscope.cc "${S}"/patches/
