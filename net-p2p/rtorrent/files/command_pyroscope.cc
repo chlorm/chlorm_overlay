@@ -29,7 +29,7 @@
 //#if RT_HEX_VERSION < 0x000904
 //    #include <sigc++/adaptors/bind.h>
 //#endif
-
+#include <sigc++/adaptors/bind.h>
 #include "core/download.h"
 #include "core/manager.h"
 #include "core/view_manager.h"
