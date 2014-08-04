@@ -58,9 +58,9 @@ src_prepare() {
         	"${S}"/configure.ac > ${S}/configure.ac \
         	|| die "API version failed"
 
-	    for i in "${S}"/patches/*.{cc,h}; do
-        	ln -nfs $i src
-    	done
+#	    for i in "${S}"/patches/*.{cc,h}; do
+#        	ln -nfs $i src
+#    	done
 
     	eautoreconf
 
