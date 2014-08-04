@@ -1,7 +1,7 @@
 rTorrent
 ========
 
-rtorrent custom color patch
+### Color Patch
 
 [rtorrent.rc color configuration variables]
 
