@@ -21,7 +21,7 @@ DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
 
 src_prepare() {
-	elibtoolize
+	./autogen.sh
 }
 
 src_configure() {
