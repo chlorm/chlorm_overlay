@@ -20,9 +20,10 @@ DEPEND="${RDEPEND}
 	dev-util/cppunit
 	dev-util/pkgconfig"
 
-#src_prepare() {
-#	elibtoolize
-#}
+src_prepare() {
+	./autogen.sh
+	elibtoolize
+}
 
 src_configure() {
 	local myconf

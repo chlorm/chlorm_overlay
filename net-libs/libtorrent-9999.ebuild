@@ -1,26 +1,25 @@
-EAPI=5
+EAPI=4
 
-inherit autotools eutils libtool toolchain-funcs git-2
+inherit eutils libtool toolchain-funcs git-2
 
-DESCRIPTION="LibTorrent is a BitTorrent library written in C++ for *nix."
+DESCRIPTION="BitTorrent library written in C++ for *nix"
 HOMEPAGE="http://libtorrent.rakshasa.no/"
-
-EGIT_REPO_URI="https://github.com/rakshasa/libtorrent.git"
-EGIT_BRANCH="master"
-SRC_URI=""
+EGIT_REPO_URI="git://github.com/rakshasa/libtorrent"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS=""
 IUSE="debug ipv6 ssl"
 
-RDEPEND=">=dev-libs/libsigc++-2.2.2:2
+RDEPEND="
+	>=dev-libs/libsigc++-2.2.2:2
 	ssl? ( dev-libs/openssl )"
 DEPEND="${RDEPEND}
-	dev-util/cppunit
-	dev-util/pkgconfig"
+	virtual/pkgconfig
+	dev-util/cppunit"
 
 src_prepare() {
+#	epatch "${FILESDIR}"/download_constructor.diff
 	./autogen.sh
 	elibtoolize
 }
@@ -45,8 +44,3 @@ src_configure() {
 		$(use_enable ssl openssl) \
 		${myconf}
 }
-
-#src_install() {
-#	emake DESTDIR="${D}" install || die
-#	dodoc AUTHORS NEWS README
-#}
