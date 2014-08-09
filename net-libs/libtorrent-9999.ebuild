@@ -21,6 +21,7 @@ DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
 
 src_prepare() {
+
 	./autogen.sh
 }
 
@@ -39,7 +40,7 @@ src_configure() {
 		$(use_enable debug) \
 		$(use_enable ipv6) \
 		$(use_enable ssl openssl) \
-		${myconf}
+		#${myconf}
 }
 
 #src_install() {
