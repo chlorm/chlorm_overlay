@@ -25,13 +25,13 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf
-	echo "int main(){return posix_fallocate();}" > "${T}"/posix_fallocate.c
-	if $(tc-getCC) ${CFLAGS} ${LDFLAGS} "${T}"/posix_fallocate.c -o /dev/null 2>/dev/null ; then
-		myconf="--with-posix-fallocate"
-	else
-		myconf="--without-posix-fallocate"
-	fi
+#	local myconf
+#	echo "int main(){return posix_fallocate();}" > "${T}"/posix_fallocate.c
+#	if $(tc-getCC) ${CFLAGS} ${LDFLAGS} "${T}"/posix_fallocate.c -o /dev/null 2>/dev/null ; then
+#		myconf="--with-posix-fallocate"
+#	else
+#		myconf="--without-posix-fallocate"
+#	fi
 
 	CONFIG_SHELL=${BASH} econf \
 		--disable-dependency-tracking \
