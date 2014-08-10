@@ -1,3 +1,16 @@
+##       ________   ___       ___
+##      /  _____/  /  /      /  /
+##     /  /       /  /      /  /
+##    /  /       /  /____  /  / _______  _______  ____  ____
+##   /  /       /  ___  / /  / /  __  / /  ____/ /    \/    \
+##  /  /_____  /  /  / / /  / /  /_/ / /  /     /  /\    /\  \
+## /________/ /__/  /_/ /__/ /______/ /__/     /__/  \__/  \__\ TM
+##
+## Author: Cody Opel
+## E-mail: codyopel@gmail.com
+## Copyright (c) 2014 All Rights Reserved, http://www.chlorm.net
+## License: The MIT License - http://opensource.org/licenses/MIT
+
 EAPI="5"
 
 inherit python autotools eutils
@@ -12,11 +25,11 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="x11-libs/libnotify
-		media-libs/gstreamer
-		>=media-libs/musicbrainz-5.0.0
-		media-plugins/gst-plugins-good
-		media-plugins/gst-plugins-meta
-		>=x11-libs/gtk+-3.8.0"
+	media-libs/gstreamer
+	>=media-libs/musicbrainz-5.0.0
+	media-plugins/gst-plugins-good
+	media-plugins/gst-plugins-meta
+	>=x11-libs/gtk+-3.8.0"
 
 src_unpack() {
     if has ${a}.tar.xz ${A} ; then

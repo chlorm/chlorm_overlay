@@ -1,11 +1,19 @@
-# Copyright 1999-2014 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: $
+##       ________   ___       ___
+##      /  _____/  /  /      /  /
+##     /  /       /  /      /  /
+##    /  /       /  /____  /  / _______  _______  ____  ____
+##   /  /       /  ___  / /  / /  __  / /  ____/ /    \/    \
+##  /  /_____  /  /  / / /  / /  /_/ / /  /     /  /\    /\  \
+## /________/ /__/  /_/ /__/ /______/ /__/     /__/  \__/  \__\ TM
+##
+## Author: Cody Opel
+## E-mail: codyopel@gmail.com
+## Copyright (c) 2014 All Rights Reserved, http://www.chlorm.net
+## License: The MIT License - http://opensource.org/licenses/MIT
 
 EAPI="4"
 inherit eutils gnome2-utils
 
-# get the major version from PV
 MV="${PV:0:1}"
 
 MY_PN="sublime_text_${MV}"

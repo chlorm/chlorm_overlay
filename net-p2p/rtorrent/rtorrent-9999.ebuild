@@ -1,4 +1,15 @@
-# Copyright 2014 Chlorm.net
+##       ________   ___       ___
+##      /  _____/  /  /      /  /
+##     /  /       /  /      /  /
+##    /  /       /  /____  /  / _______  _______  ____  ____
+##   /  /       /  ___  / /  / /  __  / /  ____/ /    \/    \
+##  /  /_____  /  /  / / /  / /  /_/ / /  /     /  /\    /\  \
+## /________/ /__/  /_/ /__/ /______/ /__/     /__/  \__/  \__\ TM
+##
+## Author: Cody Opel
+## E-mail: codyopel@gmail.com
+## Copyright (c) 2014 All Rights Reserved, http://www.chlorm.net
+## License: The MIT License - http://opensource.org/licenses/MIT
 
 EAPI=5
 
@@ -13,7 +24,7 @@ SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS=""
 IUSE="color daemon debug ipv6 selinux test xmlrpc"
 
 COMMON_DEPEND="=net-libs/libtorrent-9999

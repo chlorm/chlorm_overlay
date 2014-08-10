@@ -1,4 +1,15 @@
-# Copyright 2014 Chlorm.net
+##       ________   ___       ___
+##      /  _____/  /  /      /  /
+##     /  /       /  /      /  /
+##    /  /       /  /____  /  / _______  _______  ____  ____
+##   /  /       /  ___  / /  / /  __  / /  ____/ /    \/    \
+##  /  /_____  /  /  / / /  / /  /_/ / /  /     /  /\    /\  \
+## /________/ /__/  /_/ /__/ /______/ /__/     /__/  \__/  \__\ TM
+##
+## Author: Cody Opel
+## E-mail: codyopel@gmail.com
+## Copyright (c) 2014 All Rights Reserved, http://www.chlorm.net
+## License: The MIT License - http://opensource.org/licenses/MIT
 
 EAPI=5
 
@@ -28,20 +39,16 @@ DEPEND="${COMMON_DEPEND}
 DOCS=( doc/rtorrent.rc )
 
 src_prepare() {
-	# bug #358271
 	epatch "${FILESDIR}"/${PN}-0.9.1-ncurses.patch
 
 	if use color ; then
 		epatch "${FILESDIR}"/${P}_color.patch
 	fi
 
-	# upstream forgot to include
 	cp "${FILESDIR}"/rtorrent.1 "${S}"/doc/ || die
 }
 
 src_configure() {
-    #patch -Np1 -i "${startdir}/rtorrent.patch"
-	# configure needs bash or script bombs out on some null shift, bug #291229
 	CONFIG_SHELL=${BASH} econf \
 		--disable-dependency-tracking \
 		$(use_enable debug) \

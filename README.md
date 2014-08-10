@@ -1,3 +1,13 @@
+'''
+       ________   ___       ___
+      /  _____/  /  /      /  /
+     /  /       /  /      /  /
+    /  /       /  /____  /  / _______  _______  ____  ____
+   /  /       /  ___  / /  / /  __  / /  ____/ /    \/    \
+  /  /_____  /  /  / / /  / /  /_/ / /  /     /  /\    /\  \
+ /________/ /__/  /_/ /__/ /______/ /__/     /__/  \__/  \__\ TM
+'''
+
 Chlorm's Gentoo Overlay
 =======================
 I am working to add packages that I use to this overlay.  I will also be working on my own forks here as well.

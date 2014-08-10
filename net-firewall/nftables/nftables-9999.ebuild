@@ -11,32 +11,39 @@
 ## Copyright (c) 2014 All Rights Reserved, http://www.chlorm.net
 ## License: The MIT License - http://opensource.org/licenses/MIT
 
-EAPI="5"
+EAPI=5
+inherit autotools git-2
 
-inherit python autotools eutils git-2
+DESCRIPTION="nftables aims to replace the existing {ip,ip6,arp,eb}tables framework"
+HOMEPAGE="http://www.netfilter.org/projects/nftables/"
+EGIT_REPO_URI="git://git.netfilter.org/${PN}.git"
+EGIT_MASTER="master"
 
-MY_PN="${PN/d/D}"
-
-DESCRIPTION="MPRIS v2.1 support for MPD"
-HOMEPAGE="http://github.com/eonpatapon/mpDris2"
-SRC_URI=""
-EGIT_REPO_URI="git://github.com/eonpatapon/mpDris2.git"
-
-LICENSE="GPL-3"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+IUSE="man pdf"
 
-DEPEND=">=dev-lang/python-2.5
-	>=dev-python/dbus-python-1.2.0
-	>=dev-python/notify-python-0.1.1-r3
-	>=dev-python/pygobject-2.28.6-r55
-	>=dev-python/python-mpd-0.5.3"
+RDEPEND="dev-libs/gmp
+	net-libs/libmnl
+	net-libs/libnftnl
+	sys-libs/readline"
+DEPEND="${RDEPEND}
+	sys-devel/bison
+	sys-devel/flex
+	man? ( app-text/docbook2X )
+	pdf? ( app-text/docbook-sgml-utils[tetex] )"
 
 src_prepare() {
 	eautoreconf
 }
 
+src_configure() {
+	econf --disable-debug
+}
+
 src_install() {
-	emake install DESTDIR="${D}" || die "Failed to install"
+	default
+
+	prune_libtool_files --all
 }
