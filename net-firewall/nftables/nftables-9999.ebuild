@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 	sys-devel/bison
 	sys-devel/flex
 	man? ( app-text/docbook2X )
-	pdf? ( app-text/docbook-sgml-utils[tetex] )"
+	pdf? ( app-text/docbook-sgml-utils )"
 
 src_prepare() {
 	eautoreconf
