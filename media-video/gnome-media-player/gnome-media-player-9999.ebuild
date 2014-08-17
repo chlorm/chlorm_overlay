@@ -34,10 +34,14 @@ DEPEND="${CDEPEND}
 src_unpack() {
 	bzr_src_unpack
 }
-src_configre() {
 
+src_configre() {
 	# This should go to src_compile, but... (;
 	cd "${S}"
 	./autogen.sh || die "autogen"
-	./configure
+	econf
+}
+
+src_install() {
+	emake DESTDIR="${D}" install || die "install failed"
 }
