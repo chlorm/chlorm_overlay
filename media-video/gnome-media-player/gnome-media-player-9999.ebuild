@@ -7,8 +7,7 @@ inherit versionator bzr
 
 EBZR_REPO_URI="lp:gnome-media-player"
 
-DESCRIPTION="A simple media player for GNOME that supports libvlc, xine-lib and
-libgstreamer"
+DESCRIPTION="A simple media player for GNOME that supports libvlc, xine-lib and libgstreamer"
 HOMEPAGE="http://launchpad.net/gnome-media-player"
 #SRC_URI="http://launchpad.net/zeitgeist-datahub/${MY_PV}/${PV}/+download/${P}.tar.gz"
 
@@ -20,11 +19,11 @@ IUSE=""
 
 CDEPEND="dev-libs/glib:2
 	x11-libs/gtk+:2
-	media-video/vlc
-	media-libs/xine-lib
+	>=media-video/vlc-1.0.0
+	>=media-libs/xine-lib-1.1.16
 	media-libs/gstreamer
 	dev-cpp/gconfmm
-	dev-cpp/gtkmm
+	>=dev-cpp/gtkmm-2.12
 	dev-libs/libsigc++:2
 	dev-perl/Gtk2-Unique
 	dev-libs/dbus-glib"
@@ -34,6 +33,8 @@ DEPEND="${CDEPEND}
 
 src_unpack() {
 	bzr_src_unpack
+}
+src_configre() {
 
 	# This should go to src_compile, but... (;
 	cd "${S}"
