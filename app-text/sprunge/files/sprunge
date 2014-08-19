@@ -1,0 +1,7 @@
+#!/bin/bash
+#  -F, --form CONTENT  Specify HTTP multipart POST data (H)
+
+echo 'Select a file to sprunge:'
+read input
+
+cat $input | curl -F 'sprunge=<-' http://sprunge.us | awk '/http://sprunge.us/ {print $NF} ?py#n-7'
