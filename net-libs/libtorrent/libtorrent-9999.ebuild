@@ -1,3 +1,11 @@
+##       ________   ___       ___
+##      /  _____/  /  /      /  /
+##     /  /       /  /      /  /
+##    /  /       /  /____  /  / _______  _______  ____  ____
+##   /  /       /  ___  / /  / /  __  / /  ____/ /    \/    \
+##  /  /_____  /  /  / / /  / /  /_/ / /  /     /  /\    /\  \
+## /________/ /__/  /_/ /__/ /______/ /__/     /__/  \__/  \__\ TM
+
 EAPI=5
 
 inherit autotools eutils libtool toolchain-funcs git-2
@@ -11,7 +19,12 @@ SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+if [[ ${PV} = 9999 ]]; then
+	KEYWORDS=""
+	EGIT_HAS_SUBMODULES=true
+else
+	KEYWORDS="~amd64 ~arm ~x86"
+fi
 IUSE="debug ipv6 ssl"
 
 RDEPEND=">=dev-libs/libsigc++-2.2.2:2

@@ -1,6 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: $
+##       ________   ___       ___
+##      /  _____/  /  /      /  /
+##     /  /       /  /      /  /
+##    /  /       /  /____  /  / _______  _______  ____  ____
+##   /  /       /  ___  / /  / /  __  / /  ____/ /    \/    \
+##  /  /_____  /  /  / / /  / /  /_/ / /  /     /  /\    /\  \
+## /________/ /__/  /_/ /__/ /______/ /__/     /__/  \__/  \__\ TM
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -22,7 +26,7 @@ if [[ ${PV} = 9999 ]]; then
 	KEYWORDS=""
 	EGIT_HAS_SUBMODULES=true
 else
-	KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~x86"
 fi
 VALA_DEPEND="
 	$(vala_depend)

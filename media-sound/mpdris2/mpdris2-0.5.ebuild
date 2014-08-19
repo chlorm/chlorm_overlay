@@ -1,3 +1,11 @@
+##       ________   ___       ___
+##      /  _____/  /  /      /  /
+##     /  /       /  /      /  /
+##    /  /       /  /____  /  / _______  _______  ____  ____
+##   /  /       /  ___  / /  / /  __  / /  ____/ /    \/    \
+##  /  /_____  /  /  / / /  / /  /_/ / /  /     /  /\    /\  \
+## /________/ /__/  /_/ /__/ /______/ /__/     /__/  \__/  \__\ TM
+
 EAPI="5"
 
 inherit python autotools eutils
@@ -8,7 +16,12 @@ SRC_URI="http://mirrors.chlorm.net/src/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+if [[ ${PV} = 9999 ]]; then
+	KEYWORDS=""
+	EGIT_HAS_SUBMODULES=true
+else
+	KEYWORDS="~amd64 ~arm ~x86"
+fi
 IUSE=""
 
 DEPEND=">=dev-lang/python-2.5

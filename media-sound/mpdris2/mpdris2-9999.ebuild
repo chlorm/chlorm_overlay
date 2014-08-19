@@ -5,11 +5,6 @@
 ##   /  /       /  ___  / /  / /  __  / /  ____/ /    \/    \
 ##  /  /_____  /  /  / / /  / /  /_/ / /  /     /  /\    /\  \
 ## /________/ /__/  /_/ /__/ /______/ /__/     /__/  \__/  \__\ TM
-##
-## Author: Cody Opel
-## E-mail: codyopel@gmail.com
-## Copyright (c) 2014 All Rights Reserved, http://www.chlorm.net
-## License: The MIT License - http://opensource.org/licenses/MIT
 
 EAPI="5"
 
@@ -24,7 +19,12 @@ EGIT_REPO_URI="git://github.com/eonpatapon/mpDris2.git"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+if [[ ${PV} = 9999 ]]; then
+	KEYWORDS=""
+	EGIT_HAS_SUBMODULES=true
+else
+	KEYWORDS="~amd64 ~arm ~x86"
+fi
 IUSE=""
 
 DEPEND=">=dev-lang/python-2.5

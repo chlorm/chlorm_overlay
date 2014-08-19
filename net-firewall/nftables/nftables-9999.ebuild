@@ -5,11 +5,6 @@
 ##   /  /       /  ___  / /  / /  __  / /  ____/ /    \/    \
 ##  /  /_____  /  /  / / /  / /  /_/ / /  /     /  /\    /\  \
 ## /________/ /__/  /_/ /__/ /______/ /__/     /__/  \__/  \__\ TM
-##
-## Author: Cody Opel
-## E-mail: codyopel@gmail.com
-## Copyright (c) 2014 All Rights Reserved, http://www.chlorm.net
-## License: The MIT License - http://opensource.org/licenses/MIT
 
 EAPI=5
 inherit autotools git-2
