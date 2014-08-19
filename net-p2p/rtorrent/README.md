@@ -3,7 +3,7 @@ rTorrent
 
 ### Color Patch
 
-[rtorrent.rc color configuration variables]
+[rtorrent.rc color configuration variables] Updated to use C++ std namespaces from tr1, requires >0.9.4
 
 ```
 color_bg_active = 8 [background]
