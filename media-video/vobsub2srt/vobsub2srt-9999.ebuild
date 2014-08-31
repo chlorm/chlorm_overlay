@@ -8,7 +8,7 @@
 
 EAPI="5"
 
-inherit git-2
+inherit cmake-utils git-2
 
 DESCRIPTION="Converts VobSub image subtitles (.sub/.idx) to .srt textual subtitles using tesseract OCR engine"
 HOMEPAGE="https://github.com/ruediger/VobSub2SRT"
@@ -25,15 +25,3 @@ IUSE=""
 RDEPEND=">=app-text/tesseract-2.04-r1
     >=virtual/ffmpeg-0.6.90"
 DEPEND="${RDEPEND}"
-
-src_configure() {
-    econf
-}
-
-src_compile() {
-    emake || die
-}
-
-src_install() {
-    emake DESTDIR="${D}" install || die
-}
