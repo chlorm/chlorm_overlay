@@ -5,3 +5,7 @@ echo 'Select a file to sprunge:'
 read input
 
 cat $input | curl -F 'sprunge=<-' http://sprunge.us | awk '/http://sprunge.us/ {print $NF} ?py#n-7'
+
+
+
+cat README.md | curl -F 'sprunge=<-' http://sprunge.us | awk '/http/ {print $NF} ?py#n-7'
