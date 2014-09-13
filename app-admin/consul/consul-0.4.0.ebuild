@@ -30,9 +30,8 @@ IUSE="web"
 
 DEPEND="
     >=dev-lang/go-1.2
-    dev-vcs/git
-    web? ( dev-ruby/bundler dev-ruby/sass )
-"
+    dev-lang/nodejs
+    web? ( dev-ruby/bundler dev-ruby/sass )"
 RDEPEND="${DEPEND}"
 
 pkg_setup() {
@@ -59,6 +58,7 @@ src_compile() {
 
     # build the web UI
     if use web; then
+        cp -r "${GOPATH}/src/github.com/hashicorp/consul/ui"
         cd ui
         bundle
         emake dist

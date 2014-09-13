@@ -31,8 +31,7 @@ IUSE="web"
 DEPEND="
     >=dev-lang/go-1.2
     dev-vcs/git
-    web? ( dev-ruby/bundler dev-ruby/sass )
-"
+    web? ( dev-ruby/bundler dev-ruby/sass )"
 RDEPEND="${DEPEND}"
 
 pkg_setup() {
