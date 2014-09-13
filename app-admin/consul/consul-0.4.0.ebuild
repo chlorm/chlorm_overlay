@@ -58,7 +58,7 @@ src_compile() {
 
     # build the web UI
     if use web; then
-        cp -r "${GOPATH}/src/github.com/hashicorp/consul/ui"
+        cp -r "${GOPATH}/src/github.com/hashicorp/consul/ui" .
         cd ui
         bundle
         emake dist
