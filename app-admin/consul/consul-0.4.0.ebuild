@@ -30,7 +30,7 @@ IUSE="web"
 
 DEPEND="
     >=dev-lang/go-1.2
-    dev-lang/nodejs
+    net-libs/nodejs
     web? ( dev-ruby/bundler dev-ruby/sass )"
 RDEPEND="${DEPEND}"
 
