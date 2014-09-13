@@ -58,8 +58,8 @@ src_compile() {
 
     # build the web UI
     if use web; then
-        cp -r "${MY_S}/ui" .
         cd ui
+        chmod -R u+w .
         bundle
         emake dist
     fi
